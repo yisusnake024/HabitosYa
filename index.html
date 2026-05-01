@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitosYa - Seguimiento Diario</title>
+    <meta name="description" content="Registra y haz seguimiento de tus hábitos diarios con HabitosYa.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Habitos<span class="highlight">Ya</span></h1>
+            <p>Construye tu futuro, un día a la vez.</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Form Section -->
+            <section class="glass-panel form-section">
+                <h2>Registrar Cumplimiento</h2>
+                <form id="habit-form">
+                    <div class="input-group">
+                        <label for="habit-name">Nombre del Hábito</label>
+                        <input type="text" id="habit-name" required placeholder="Ej. Leer 20 páginas">
+                    </div>
+                    <div class="input-group">
+                        <label for="habit-category">Categoría</label>
+                        <select id="habit-category" required>
+                            <option value="salud">Salud</option>
+                            <option value="productividad">Productividad</option>
+                            <option value="aprendizaje">Aprendizaje</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="habit-date">Fecha</label>
+                        <input type="date" id="habit-date" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Registrar</button>
+                </form>
+            </section>
+
+            <!-- Dashboard / Stats Section -->
+            <section class="glass-panel stats-section">
+                <div class="stats-header">
+                    <h2>Resumen</h2>
+                    <div class="strategy-toggles">
+                        <button class="btn-toggle active" data-strategy="habit">Por Hábito</button>
+                        <button class="btn-toggle" data-strategy="category">Por Categoría</button>
+                    </div>
+                </div>
+                
+                <div class="total-counter">
+                    <span>Total Cumplimientos:</span>
+                    <strong id="total-count">0</strong>
+                </div>
+
+                <div id="summary-container" class="summary-grid">
+                    <!-- Summary cards injected via JS -->
+                </div>
+            </section>
+
+            <!-- List Section -->
+            <section class="glass-panel list-section">
+                <h2>Historial de Cumplimientos</h2>
+                <div id="habit-list" class="habit-list">
+                    <!-- List items injected via JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts: Loaded in order of dependency -->
+    <script src="js/core/Observer.js"></script>
+    <script src="js/core/StorageAdapter.js"></script>
+    
+    <script src="js/models/Habit.js"></script>
+    <script src="js/dtos/HabitDTO.js"></script>
+    <script src="js/factories/HabitFactory.js"></script>
+    
+    <script src="js/repositories/HabitRepository.js"></script>
+    
+    <script src="js/strategies/SummaryStrategy.js"></script>
+    <script src="js/strategies/SummaryByHabitStrategy.js"></script>
+    <script src="js/strategies/SummaryByCategoryStrategy.js"></script>
+    
+    <script src="js/services/HabitService.js"></script>
+    
+    <script src="js/views/HabitView.js"></script>
+    <script src="js/controllers/HabitController.js"></script>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
